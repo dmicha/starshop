@@ -9,9 +9,9 @@
 
     <div>
         browse througt
-        {{ numberOfStarship }}
+        {{ ships|length }}
         straships!
-        {% if numberOfStarship >400 %}
+        {% if ships|length >2 %}
             <p>
                 {# Komentarz #}
                 That's a shiploads of ships!
