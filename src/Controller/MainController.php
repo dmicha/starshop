@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class MainController extends AbstractController {
     #[Route('/')]
     public function homepage(): Response {
-        
+
         $starshipCount = 457;
 
         $myShips = [
@@ -18,7 +18,7 @@ class MainController extends AbstractController {
             'captain' => 'Jean-Luc Pickles',
             'status' => 'under construction',
         ];
-
+        
         return $this->render(
             'main/homepage.html.twig',
             [
