@@ -8,7 +8,7 @@ class Starship {
         private string $name,
         private string $class,
         private string $captain,
-        private string $status,
+        private StarshipStatusEnum $status,
     ) {
     }
 
@@ -43,7 +43,7 @@ class Starship {
     /**
      * Get the value of status
      */
-    public function getStatus(): string {
+    public function getStatus(): StarshipStatusEnum {
         return $this->status;
     }
 }
