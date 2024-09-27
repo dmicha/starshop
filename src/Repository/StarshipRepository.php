@@ -18,7 +18,7 @@ class StarshipRepository {
                 'USS LeafyCruiser (NCC-0001)',
                 'Garden',
                 'Jean-Luc Pickles',
-                StarshipStatusEnum::IN_PROGRES,
+                StarshipStatusEnum::IN_PROGRESS,
             ),
             new Starship(
                 2,
