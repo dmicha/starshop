@@ -6,6 +6,7 @@ use App\Model\Starship;
 use App\Repository\StarshipRepository;
 use App\Model\StarshipStatusEnum;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 class StarshipApiControllerTest extends WebTestCase
 {
@@ -64,5 +65,28 @@ class StarshipApiControllerTest extends WebTestCase
         $responseData = json_decode($client->getResponse()->getContent(), true);
         $this->assertEquals('X-Wing', $responseData['name']);
     }
+    public function testGetReturnsNotFoundIfStarshipDoesNotExist()
+    {
+        $client = static::createClient();
+    
+        // Tworzymy mock repozytorium
+        $repositoryMock = $this->createMock(StarshipRepository::class);
+    
+        // Repozytorium zwraca null dla nieistniejącego statku
+        $repositoryMock->method('find')->willReturn(null);
+    
+        // Wstrzykiwanie mocka repozytorium do kontenera
+        static::getContainer()->set(StarshipRepository::class, $repositoryMock);
+    
+        // Wysyłamy żądanie GET do endpointu dla nieistniejącego statku
+        $client->request('GET', '/api/starships/999'); // Przykładowe ID, które nie istnieje
+    
+        // Sprawdzamy, czy odpowiedź HTTP jest błędem 404
+        $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+    
+        // Opcjonalnie: Możesz także sprawdzić, czy zawartość odpowiedzi zawiera komunikat
+        $this->assertStringContainsString('Starship not found', $client->getResponse()->getContent());
+    }
+
     
 }

@@ -16,7 +16,6 @@ class MainControllerTest extends WebTestCase
         // Mockowanie EntityManager i Repozytorium
         $entityManager = $this->createMock(EntityManagerInterface::class);
         $repositoryMock = $this->createMock(EntityRepository::class);
-
         // Przykładowe dane statków z ID i innymi atrybutami
         $ship1 = new Ships();
         $ship1->setName('X-Wing');
