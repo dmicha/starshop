@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\StarshipRepository;
+use App\Entity\Ships;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,11 +12,11 @@ use Symfony\Component\Routing\Attribute\Route;
 class MainController extends AbstractController {
     
     #[Route('/',name:'app_homepage')]
-    public function homepage(StarshipRepository $starshipRepository): Response {
+    public function homepage(EntityManagerInterface $entityManager): Response {
 
 
-        $ships = $starshipRepository->findAll();
-        $myShips = $ships[array_rand($ships)];
+        $ships = $entityManager->getRepository(Ships::class)->findAll();
+        $myShips = $ships[0];
 
         return $this->render(
             'main/homepage.html.twig',
