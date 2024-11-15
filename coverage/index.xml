@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <build time="Wed Oct 30 11:38:08 UTC 2024" phpunit="9.6.21" coverage="9.2.32">
+    <runtime name="PHP" version="8.2.24" url="https://secure.php.net/"/>
+    <driver name="xdebug" version="3.4.0beta1"/>
+  </build>
+  <project source="C:\Users\Damian\Sites\starshop\src">
+    <tests>
+      <test name="App\Command\ShipReportCommandTest::testExecuteWithArgument" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Command\ShipReportCommandTest::testExecuteWithoutArgument" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Command\ShipReportCommandTest::testExecuteWithOption" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Controller\MainControllerTest::testHomepageRendersCorrectly" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Controller\StarshipApiControllerTest::testGetCollectionReturnsStarships" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Controller\StarshipApiControllerTest::testGetReturnsStarshipIfExists" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Controller\StarshipApiControllerTest::testGetReturnsNotFoundIfStarshipDoesNotExist" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Controller\StarshipControllerTest::testShowReturnsShipIfFound" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Controller\StarshipControllerTest::testShowThrowsExceptionIfShipNotFound" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Entity\ShipStatusTest::testInitialValues" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Entity\ShipStatusTest::testSetAndGetId" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Entity\ShipStatusTest::testSetAndGetIdShip" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Entity\ShipStatusTest::testSetAndGetStatus" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Entity\ShipStatusTest::testSetIdToInvalidValue" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Repository\StarshipRepositoryTest::testFindAll" size="unknown" result="0" status="PASSED"/>
+      <test name="App\Tests\Repository\StarshipRepositoryTest::testFind" size="unknown" result="0" status="PASSED"/>
+    </tests>
+    <directory name="/">
+      <totals>
+        <lines total="545" comments="68" code="477" executable="111" executed="100" percent="90.09"/>
+        <methods count="41" tested="33" percent="80.49"/>
+        <functions count="0" tested="0" percent="0"/>
+        <classes count="10" tested="7" percent="70.00"/>
+        <traits count="0" tested="0" percent="0"/>
+      </totals>
+      <directory name="Command">
+        <totals>
+          <lines total="52" comments="1" code="51" executable="16" executed="16" percent="100.00"/>
+          <methods count="3" tested="3" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="1" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="ShipReportCommand.php" href="Command/ShipReportCommand.php.xml">
+          <totals>
+            <lines total="52" comments="1" code="51" executable="16" executed="16" percent="100.00"/>
+            <methods count="3" tested="3" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <directory name="Controller">
+        <totals>
+          <lines total="88" comments="0" code="88" executable="21" executed="21" percent="100.00"/>
+          <methods count="4" tested="4" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="3" tested="3" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="MainController.php" href="Controller/MainController.php.xml">
+          <totals>
+            <lines total="30" comments="0" code="30" executable="9" executed="9" percent="100.00"/>
+            <methods count="1" tested="1" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="StarshipApiController.php" href="Controller/StarshipApiController.php.xml">
+          <totals>
+            <lines total="32" comments="0" code="32" executable="6" executed="6" percent="100.00"/>
+            <methods count="2" tested="2" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="StarshipController.php" href="Controller/StarshipController.php.xml">
+          <totals>
+            <lines total="26" comments="0" code="26" executable="6" executed="6" percent="100.00"/>
+            <methods count="1" tested="1" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <directory name="Entity">
+        <totals>
+          <lines total="183" comments="0" code="183" executable="31" executed="22" percent="70.97"/>
+          <methods count="21" tested="15" percent="71.43"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="2" tested="1" percent="50.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="ShipStatus.php" href="Entity/ShipStatus.php.xml">
+          <totals>
+            <lines total="64" comments="0" code="64" executable="10" executed="10" percent="100.00"/>
+            <methods count="7" tested="7" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="Ships.php" href="Entity/Ships.php.xml">
+          <totals>
+            <lines total="119" comments="0" code="119" executable="21" executed="12" percent="57.14"/>
+            <methods count="14" tested="8" percent="57.14"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <directory name="Model">
+        <totals>
+          <lines total="73" comments="15" code="58" executable="12" executed="12" percent="100.00"/>
+          <methods count="8" tested="8" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="1" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="Starship.php" href="Model/Starship.php.xml">
+          <totals>
+            <lines total="61" comments="15" code="46" executable="12" executed="12" percent="100.00"/>
+            <methods count="8" tested="8" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="StarshipStatusEnum.php" href="Model/StarshipStatusEnum.php.xml">
+          <totals>
+            <lines total="12" comments="0" code="12" executable="0" executed="0" percent="0"/>
+            <methods count="0" tested="0" percent="0"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="0" tested="0" percent="0"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <directory name="Repository">
+        <totals>
+          <lines total="137" comments="52" code="85" executable="31" executed="29" percent="93.55"/>
+          <methods count="5" tested="3" percent="60.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="3" tested="1" percent="33.33"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="ShipStatusRepository.php" href="Repository/ShipStatusRepository.php.xml">
+          <totals>
+            <lines total="44" comments="26" code="18" executable="1" executed="0" percent="0.00"/>
+            <methods count="1" tested="0" percent="0.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="ShipsRepository.php" href="Repository/ShipsRepository.php.xml">
+          <totals>
+            <lines total="44" comments="26" code="18" executable="1" executed="0" percent="0.00"/>
+            <methods count="1" tested="0" percent="0.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="StarshipRepository.php" href="Repository/StarshipRepository.php.xml">
+          <totals>
+            <lines total="49" comments="0" code="49" executable="29" executed="29" percent="100.00"/>
+            <methods count="3" tested="3" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <file name="Kernel.php" href="Kernel.php.xml">
+        <totals>
+          <lines total="12" comments="0" code="12" executable="0" executed="0" percent="0"/>
+          <methods count="0" tested="0" percent="0"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="0" tested="0" percent="0"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+    </directory>
+  </project>
+</phpunit>

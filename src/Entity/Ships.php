@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\ShipsRepository;
 use Doctrine\ORM\Mapping as ORM;
-use App\Model\StarshipStatusEnum;
 
 #[ORM\Entity(repositoryClass: ShipsRepository::class)]
 class Ships
@@ -23,15 +21,11 @@ class Ships
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $captain = null;
 
+    #[ORM\Column(length: 255, nullable: true)] // Dodajemy to pole
+    private ?string $image_url = null; // Właściwość dla URL obrazu
+
     #[ORM\ManyToOne(targetEntity: ShipStatus::class)]
-    private ShipStatus $status;
-
-    #[ORM\ManyToOne]
-    private ?ships $status_id = null;
-
-    #[ORM\Column]
-    private ?int $status_id_id = null;
-
+    private ?ShipStatus $status = null;
 
     public function getId(): ?int
     {
@@ -41,7 +35,6 @@ class Ships
     public function setId(int $id): static
     {
         $this->id = $id;
-
         return $this;
     }
 
@@ -53,7 +46,6 @@ class Ships
     public function setName(?string $name): static
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -65,7 +57,6 @@ class Ships
     public function setClass(?string $class): static
     {
         $this->class = $class;
-
         return $this;
     }
 
@@ -77,42 +68,34 @@ class Ships
     public function setCaptain(?string $captain): static
     {
         $this->captain = $captain;
-
         return $this;
-    }  
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->image_url;
+    }
+
+    public function setImageUrl(?string $image_url): self
+    {
+        $this->image_url = $image_url;
+        return $this;
+    }
+
     public function getStatus(): ?ShipStatus
     {
         return $this->status;
     }
+
     public function setStatus(?ShipStatus $status): self
     {
         $this->status = $status;
-
         return $this;
     }
 
-    public function getStatusId(): ?ships
+    // Metoda do uzyskiwania ID statusu
+    public function getStatusId(): ?int
     {
-        return $this->status_id;
+        return $this->status ? $this->status->getId() : null; // Zwraca ID statusu lub null
     }
-
-    public function setStatusId(?ships $status_id): static
-    {
-        $this->status_id = $status_id;
-
-        return $this;
-    }
-
-    public function getStatusIdId(): ?int
-    {
-        return $this->status_id_id;
-    }
-
-    public function setStatusIdId(int $status_id_id): static
-    {
-        $this->status_id_id = $status_id_id;
-
-        return $this;
-    }
-
 }

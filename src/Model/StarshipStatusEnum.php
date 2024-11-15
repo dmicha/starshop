@@ -4,8 +4,8 @@ namespace App\Model;
 
 enum StarshipStatusEnum: string
 {
-    case WAITING = 'waiting';
-    case IN_PROGRESS = 'in progress';
-    case COMPLETED = 'comlpeted';
+    case WAITING = 'OCZEKIWANIE';
+    case IN_PROGRESS = 'W TRAKCIE REALIZACJI';
+    case COMPLETED = 'ZREALIZOWANE';
 
 }

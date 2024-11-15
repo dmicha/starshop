@@ -17,7 +17,7 @@ class MainController extends AbstractController {
 
         $ships = $entityManager->getRepository(Ships::class)->findAll();
         $myShips = $ships[0];
-
+        // dump($ships);
         return $this->render(
             'main/homepage.html.twig',
             [

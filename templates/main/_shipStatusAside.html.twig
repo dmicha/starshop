@@ -1,10 +1,11 @@
-<aside class="pb-8 lg:pb-0 lg:w-[411px] shrink-0 lg:block lg:min-h-screen text-white transition-all overflow-hidden px-8 border-b lg:border-b-0 lg:border-r border-white/20 transition-all overflow-hidden" data-controller="closeable ">
+<aside id="mySidebar" class="pb-8 lg:pb-0 lg:w-[411px] shrink-0 lg:block lg:min-h-screen text-white transition-all overflow-hidden px-8 border-b lg:border-b-0 lg:border-r border-white/20" data-controller="closeable">
     <div class="flex justify-between mt-11 mb-7">
         <h2 class="text-[32px] font-semibold">
             My Ship Status
         </h2>
-        <button data-action='closeable#close'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512"><!--!Font Awesome Pro 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--><path fill="#fff" d="M384 96c0-17.7 14.3-32 32-32s32 14.3 32 32V416c0 17.7-14.3 32-32 32s-32-14.3-32-32V96zM9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3L109.3 224 288 224c17.7 0 32 14.3 32 32s-14.3 32-32 32l-178.7 0 73.4 73.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-128-128z" />
+        <button id="closeButton" data-action="closeable#close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512">
+                <path fill="#fff" d="M384 96c0-17.7 14.3-32 32-32s32 14.3 32 32V416c0 17.7-14.3 32-32 32s-32-14.3-32-32V96zM9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3L109.3 224 288 224c17.7 0 32 14.3 32 32s-14.3 32-32 32l-178.7 0 73.4 73.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-128-128z" />
             </svg>
         </button>
     </div>
@@ -12,15 +13,23 @@
     <div>
         <div class="flex flex-col space-y-1.5">
             <div class="rounded-2xl py-1 px-3 flex justify-center w-32 items-center" style="background: rgba(255, 184, 0, .1);">
-                <div class="rounded-full h-2 w-2 bg-amber-400 blur-[1px] mr-2"></div>
+                <div class="rounded-full h-2 w-2 mr-2
+                    {% if myShip.getStatusId() == 3 %}
+                    bg-gray-400
+                    {% elseif myShip.getStatusId() == 2 %}
+                    bg-amber-400
+                    {% elseif myShip.getStatusId() == 1 %}
+                    bg-green-400
+                    {% else %}
+                    bg-red-400
+                    {% endif %}
+                "></div>
                 <p class="uppercase text-xs">
-                    in progress
+                    {{ myShip.getStatus() }}
                 </p>
             </div>
             <h3 class="tracking-tight text-[22px] font-semibold">
-                <a class="hover:underline" href="{{ path('app_starship_show', {
-                id: myShip.id
-            }) }}">
+                <a class="hover:underline" href="{{ path('app_starship_show', { id: myShip.id }) }}">
                     {{ myShip.name }}
                 </a>
             </h3>
@@ -34,7 +43,6 @@
                     {{ myShip.captain }}
                 </p>
             </div>
-
             <div class="pl-8">
                 <p class="text-slate-400 text-xs">
                     Class
@@ -46,3 +54,39 @@
         </div>
     </div>
 </aside>
+
+<!-- Przycisk do przywracania sidebaru -->
+<button id="openSidebar" class="hidden bg-gray-800 text-white p-2 rounded flex items-center justify-center" data-action="closeable#open" style="width: 40px; height: 40px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512">
+        <path transform="translate(500, 0) scale(-1, 1)" fill="#fff" d="M384 96c0-17.7 14.3-32 32-32s32 14.3 32 32V416c0 17.7-14.3 32-32 32s-32-14.3-32-32V96zM9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3L109.3 224 288 224c17.7 0 32 14.3 32 32s-14.3 32-32 32l-178.7 0 73.4 73.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-128-128z" />
+    </svg>
+</button>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebar = document.getElementById('mySidebar');
+        const closeButton = document.getElementById('closeButton');
+        const openButton = document.getElementById('openSidebar');
+
+        // Logika zamykania sidebaru
+        closeButton.addEventListener('click', function () {
+            sidebar.style.width = '0'; // Ustawiamy szerokość na 0, aby ukryć sidebar
+            sidebar.style.transition = 'width 0.5s ease'; // Dodajemy animację
+            sidebar.addEventListener('transitionend', function () {
+                sidebar.style.display = 'none'; // Ukrywamy element po animacji
+            }, { once: true }); // Używamy once, aby zdarzenie usunięte zostało po pierwszym wywołaniu
+            openButton.classList.remove('hidden'); // Pokazuje przycisk do przywracania
+        });
+
+        // Logika otwierania sidebaru
+        openButton.addEventListener('click', function () {
+            sidebar.style.display = 'block'; // Ustawiamy display na block, aby pokazać sidebar
+            requestAnimationFrame(() => {
+                sidebar.style.width = '400px'; // Ustawiamy szerokość na pełną wartość
+                sidebar.style.transition = 'width 0.5s ease'; // Dodajemy animację
+            });
+            openButton.classList.add('hidden'); // Ukrywa przycisk do przywracania
+        });
+    });
+</script>

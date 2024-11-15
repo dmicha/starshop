@@ -16,15 +16,11 @@ class ShipStatus
 
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $id_ship = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $status = null;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
     }
     public function getId(): ?int
     {
@@ -34,18 +30,6 @@ class ShipStatus
     public function setId(int $id): static
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    public function getIdShip(): ?int
-    {
-        return $this->id_ship;
-    }
-
-    public function setIdShip(?int $id_ship): static
-    {
-        $this->id_ship = $id_ship;
 
         return $this;
     }
@@ -61,4 +45,9 @@ class ShipStatus
 
         return $this;
     }
+    public function __toString(): string
+    {
+        return $this->status ?? ''; // Zwracaj status, lub pusty string, jeśli jest null
+    }
+    
 }
