@@ -45,9 +45,10 @@ class ShipsTest extends TestCase
 
     public function testSetAndGetStatusId(): void
     {
-        $statusId = new Ships(); // Assuming Ships is another valid entity.
-        $this->ship->setStatusId($statusId);
-        $this->assertSame($statusId, $this->ship->getStatusId());
+        $ship = new Ships();
+        $ship->setStatusId(456);
+    
+        $this->assertEquals(456, $ship->getStatusId());
     }
 
     public function testSetAndGetStatusIdId(): void

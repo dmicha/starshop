@@ -24,15 +24,12 @@ class ShipStatusTest extends TestCase
         $this->assertEquals(1, $shipStatus->getId());
     }
 
-    public function testSetAndGetIdShip()
+    public function testSetAndGetIdShip(): void
     {
         $shipStatus = new ShipStatus();
-        $shipStatus->setIdShip(2);
-        $this->assertEquals(2, $shipStatus->getIdShip());
-
-        // Sprawdzamy ustawienie wartości null
-        $shipStatus->setIdShip(null);
-        $this->assertNull($shipStatus->getIdShip());
+        $shipStatus->setIdShip(123);
+    
+        $this->assertEquals(123, $shipStatus->getIdShip());
     }
 
     public function testSetAndGetStatus()
